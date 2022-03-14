@@ -1,8 +1,11 @@
 import React , {useState , useReducer} from "react"
+import AddTodoForm from "./Components/AddTodoForm"
 
 // const reducer 
 const reducer = (state , action)=> {
   switch(action.type){
+    case "addTodo" :
+      return {...state , todos : [...state.todos , action.payload]}
 
     default :
       return state
@@ -26,7 +29,22 @@ function App() {
   const [state , dispatch] = useReducer(reducer , initState)
   return (
     <>
-   
+      <div>
+        <div className="addTodo">
+          <AddTodoForm dispatch = {dispatch}/>
+        </div>
+
+        <div className="showTodo">
+          <div>
+            {state.todos.map((item , index)=> (
+              <div key={index}>
+                <span><span>{index} : {" "}</span>{item.text}</span><span><input type="checkbox"/></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    
     </>
   );
 }
