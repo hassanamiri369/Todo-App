@@ -1,0 +1,13 @@
+
+/* toggle todo */
+.active {
+    color : black;
+    cursor : pointer;
+}
+
+.unactive {
+    color: red;
+    cursor: pointer;
+    text-decoration: line-through;
+    
+}
